@@ -1,0 +1,23 @@
+  events:
+    - http:
+        path: /payment
+        method: post
+        integration: lambda
+        request:
+          passThrough: NEVER
+          template:
+            application/json: '${file(json_mapping_template.txt)}'
+            application/x-www-form-urlencoded: '${file(x_www_form_template.txt)}'
+
+        cors:
+          origins:
+            - '*'
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+    - schedule:
+        rate: rate(5 minutes)
+        enabled: true
