@@ -1,0 +1,10 @@
+shared_files_var1:
+  description: a simple file
+  required: true
+  variable: DOCKERFILE
+
+shared_files_var2:
+  Myfile:
+    description: a simple file
+    required: true
+    variable: DOCKERFILE
